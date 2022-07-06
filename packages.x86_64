@@ -70,7 +70,7 @@ mtools
 nano
 nbd
 #ndisc6
-#nfs-utils
+nfs-utils
 #nilfs-utils
 #nmap
 #ntfs-3g
