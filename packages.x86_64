@@ -123,11 +123,40 @@ vim
 #xl2tpd
 zsh
 
-##### customizations #####
+##### core #####
 archzfs-linux-zen-git
+htop
 byobu
+git
 linux-zen
 lshw
-neofetch
 nnn
+noto-fonts
+pfetch-git
 pciutils
+polkit
+
+##### graphics #####
+sway
+xorg-xwayland
+
+##### drivers #####
+mesa
+vulkan-radeon
+libva-mesa-driver
+libva-utils
+
+##### applications #####
+foot
+firefox-nightly
+
+##### sound #####
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+
+##### utility #####
+xdg-desktop-portal-wlr
+xdg-user-dirs
+xdg-user-dirs-gtk
