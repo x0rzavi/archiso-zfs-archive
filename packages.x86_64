@@ -125,14 +125,8 @@ zsh
 
 ##### core #####
 archzfs-linux-zen-git
-htop
-byobu
-git
 linux-zen
 lshw
-nnn
-noto-fonts
-pfetch-git
 pciutils
 polkit
 
@@ -141,10 +135,8 @@ sway
 xorg-xwayland
 
 ##### drivers #####
-mesa
 vulkan-radeon
 libva-mesa-driver
-libva-utils
 
 ##### applications #####
 foot
@@ -157,6 +149,14 @@ pipewire-pulse
 wireplumber
 
 ##### utility #####
+htop
+byobu
+git
+ffmpeg
+micro
+nnn
+noto-fonts
+pfetch-git
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-user-dirs-gtk
