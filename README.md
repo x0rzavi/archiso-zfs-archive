@@ -12,7 +12,7 @@
 
 ## Personalized
 - Tuned only for AMD
-- Added x0rzavi local user (autologin)
+- Added x0rzavi local user
 - Added iwd profile
 - Added ssh pubkey
 - Pre-added best mirrors
