@@ -19,5 +19,9 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
+  ["/root/.ssh"]="0:0:0700"
+  ["/root/.ssh/authorized_keys"]="0:0:0600"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
+  ["/var/lib/iwd"]="0:0:0700"
+  ["/var/lib/iwd/x0rzavi.psk"]="0:0:0600"
 )
