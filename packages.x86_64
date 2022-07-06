@@ -17,7 +17,6 @@ less
 linux-zen
 linux-firmware
 lvm2
-lynx
 mc
 mkinitcpio
 mkinitcpio-archiso
@@ -25,7 +24,6 @@ mkinitcpio-nfs-utils
 mtools
 nano
 nbd
-ndisc6
 openssh
 parted
 pv
@@ -37,11 +35,15 @@ terminus-font
 tmux
 tpm2-tss
 vim
-wireless-regdb
-wireless_tools
-wpa_supplicant
 zsh
+
+##### customizations #####
 archzfs-linux-zen-git
-neofetch
 byobu
 nnn
+lshw
+pciutils
+usbutils
+hdparm
+sdparm
+dmidecode
