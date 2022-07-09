@@ -1,0 +1,6 @@
+path=(~/.local/bin ~/.bin $path)
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+#if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+#  exec sway_enter.sh
+#fi
