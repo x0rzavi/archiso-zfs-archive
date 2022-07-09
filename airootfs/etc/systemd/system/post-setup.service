@@ -1,0 +1,11 @@
+[Unit]
+Description=Setup after booted up and network active
+After=pacman-init.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/post-setup
+
+[Install]
+WantedBy=multi-user.target

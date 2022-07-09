@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Expand cowspace to 6GiB
+expand_cowspace () {
+    mount -o remount,size=6G /run/archiso/cowspace
+    echo "cowspace expansion done!"
+}
+
+# Reduce amdgpu brightness to 15
+amdgpu_brightness () {
+    sysfs_file=/sys/class/backlight/amdgpu_bl0/brightness
+    if [[ -f "$sysfs_file" ]]; then
+        echo 15 > "$sysfs_file"
+        echo "amdgpu brightness control done!"
+    else
+        echo "amdgpu brightness control not found!"
+    fi
+}
+
+# pacman.conf manipulations
+pacman_conf () {
+    sed -i 's/#ParallelDownloads.*/ParallelDownloads = 15/' /etc/pacman.conf
+    sed -i 's/#Color/Color/' /etc/pacman.conf
+    echo "pacman.conf manipulations done!"
+}
+
+# paru.conf manipulations
+paru_conf () {
+    sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf
+    sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf
+    echo "paru.conf manipulations done!"
+}
+
+# Add chaotic-aur repo
+chaotic_aur () {
+    pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+    pacman-key --lsign-key FBA220DFC880C036
+    pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+
+cat >>/etc/pacman.conf << EOF
+
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist 
+EOF
+
+    echo "chaotic-aur repo added!"
+}
+
+# Actually do things
+expand_cowspace
+amdgpu_brightness
+pacman_conf
+paru_conf
+chaotic_aur
