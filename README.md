@@ -9,7 +9,7 @@
 - cowspace increased to 6GiB
 - chaotic-aur available during ISO bootstrap
 - nowatchdog + nomitigations kernel commandlines
-- swaywm + firefox + pipewire included
+- swaywm + firefox + pipewire included [ Riced ;) ]
 
 ## Personalized
 - Tuned only for AMD
