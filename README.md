@@ -7,12 +7,14 @@
 - Debloated packages
 - Accessibilty removed
 - cowspace increased to 6GiB
+- chaotic-aur available during ISO bootstrap
 - nowatchdog + nomitigations kernel commandlines
 - swaywm + firefox + pipewire included
 
 ## Personalized
 - Tuned only for AMD
-- Added x0rzavi local user
+- AMDGPU early KMS
+- Added x0rzavi local user (pwd: 1229)
 - Added iwd profile
 - Added ssh pubkey
 - Pre-added best mirrors
