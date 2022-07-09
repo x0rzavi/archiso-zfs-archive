@@ -131,8 +131,18 @@ pciutils
 polkit
 
 ##### graphics #####
+bemenu-wayland
+mako
 sway
+swaybg
+waybar
 xorg-xwayland
+xsettingsd
+
+##### fonts #####
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
 
 ##### drivers #####
 vulkan-radeon
@@ -145,18 +155,24 @@ firefox-nightly
 ##### sound #####
 pipewire
 pipewire-alsa
+pipewire-jack
 pipewire-pulse
 wireplumber
 
 ##### utility #####
-htop
+acpilight
+btop
 byobu
-git
 ffmpeg
+git
+htop
 micro
 nnn
-noto-fonts
+paru
 pfetch-git
+playerctl
+wl-clipboard
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-user-dirs-gtk
+zsh-autosuggestions
