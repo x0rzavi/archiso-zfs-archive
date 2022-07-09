@@ -87,8 +87,8 @@ parted
 #ppp
 #pptpclient
 pv
-#qemu-guest-agent
-refind
+qemu-guest-agent
+#refind
 #reflector
 #reiserfsprogs
 #rp-pppoe
@@ -101,7 +101,7 @@ sdparm
 #sof-firmware
 #squashfs-tools
 sudo
-syslinux
+#syslinux
 systemd-resolvconf
 #tcpdump
 terminus-font
