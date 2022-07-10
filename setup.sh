@@ -1,5 +1,7 @@
 #!/usr/bin/env
 
+sed -i 's/#ParallelDownloads.*/ParallelDownloads = 15/' /etc/pacman.conf
+
 pacman-key --init
 pacman -Syyu --noconfirm
 
@@ -8,11 +10,7 @@ pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
 cat >>/etc/pacman.conf << EOF
 
 [archzfs]
-Server = https://archzfs.com/$repo/$arch
-Server = http://mirror.sum7.eu/archlinux/archzfs/$repo/$arch
-Server = https://mirror.biocrafting.net/archlinux/archzfs/$repo/$arch
-Server = https://mirror.in.themindsmaze.com/archzfs/$repo/$arch
-Server = https://zxcvfdsa.com/archzfs/$repo/$arch
+Server = https://archzfs.com/\$repo/\$arch
 EOF
 
 pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
