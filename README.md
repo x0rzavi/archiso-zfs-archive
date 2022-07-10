@@ -17,6 +17,8 @@
 ## Personalized
 - Github Actions build support
 - WM fully riced ;)
+- nbfc-linux configured
+- zenmonitor3 added
 - Tuned only for AMD
 - AMDGPU early KMS
 - AMD iommu in passthrough mode
