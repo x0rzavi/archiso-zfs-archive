@@ -27,10 +27,7 @@ jobs:
       - name: Init pacman keyring
         run: |
           pacman-key --init
-          pacman -Syyu --noconfirm paru
-
-      - name: Build local repo
-        run: source $(pwd)/scripts/local_repo.sh
+          pacman -Syyu --noconfirm
 
       - name: Add archzfs repo
         run: |
@@ -46,9 +43,13 @@ jobs:
           pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
           echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
       
+      - name: Build local repo
+        run: |
+          pacman -Syyu paru archiso --noconfirm
+          source $(pwd)/scripts/local_repo.sh
+
       - name: Build ArchISO
         run: |
-          pacman -Syyu archiso --noconfirm
           time mkarchiso -v .
       
       - name: Create release tags
