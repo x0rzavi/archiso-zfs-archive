@@ -8,19 +8,40 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: archlinux:latest
-      #env:
-      #  NODE_ENV: development
-      #ports:
-      #  - 80
-      #volumes:
-      #  - my_docker_volume:/volume_mount
       options: --privileged 
     steps:
       - name: Checkout files
         uses: actions/checkout@v3
-      - name: Setup environment
-        run: source ./setup.sh
-      - name: Start building
+
+      - name: Edit pacman config
+        run: sed -i 's/#ParallelDownloads.*/ParallelDownloads = 15/' /etc/pacman.conf
+      
+      - name: Init pacman keyring
+        run: |
+          pacman-key --init
+          pacman -Syyu --noconfirm
+
+      - name: Add archzfs repo
+        run: |
+          pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+          pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+          echo -e "\n[archzfs]\nServer = https://archzfs.com/\$repo/\$arch" >> /etc/pacman.conf
+          pacman -Syyu --noconfirm
+      
+      - name: Add chaotic-aur repo
+        run: |
+          pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+          pacman-key --lsign-key FBA220DFC880C036
+          pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+          echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+      
+      - name: Build ArchISO
         run: |
           pacman -Syyu archiso --noconfirm
-          mkarchiso -v -w /tmp/archiso .
+          mkarchiso -w /tmp/archiso .
+      
+      - name: Upload ArchISO artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: out/*
+          
