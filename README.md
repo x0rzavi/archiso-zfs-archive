@@ -4,7 +4,7 @@
 - ZFS support
 - Linux Xanmod Edge
 - Bigger fonts by default in tty
-- zstd compression (Replaced from xz)
+- zstd compression
 - Debloated airootfs
 - Debloated packages
 - Accessibilty removed
