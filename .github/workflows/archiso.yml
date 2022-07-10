@@ -38,7 +38,7 @@ jobs:
       - name: Build ArchISO
         run: |
           pacman -Syyu archiso --noconfirm
-          mkarchiso -w /tmp/archiso .
+          mkarchiso -v -w /tmp/archiso .
       
       - name: Upload ArchISO artifact
         uses: actions/upload-artifact@v3
