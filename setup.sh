@@ -9,6 +9,10 @@ cat >>/etc/pacman.conf << EOF
 
 [archzfs]
 Server = https://archzfs.com/$repo/$arch
+Server = http://mirror.sum7.eu/archlinux/archzfs/$repo/$arch
+Server = https://mirror.biocrafting.net/archlinux/archzfs/$repo/$arch
+Server = https://mirror.in.themindsmaze.com/archzfs/$repo/$arch
+Server = https://zxcvfdsa.com/archzfs/$repo/$arch
 EOF
 
 pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
