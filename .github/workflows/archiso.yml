@@ -24,3 +24,4 @@ jobs:
           whoami
           pwd
           pacman -Syyu archiso --noconfirm
+          mkarchiso -v -w /tmp/archiso .
