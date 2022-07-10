@@ -1,6 +1,6 @@
 ## Customizations
 - ZFS support
-- Linux Zen (Replaced from vanilla arch kernel)
+- Linux Xanmod Edge (Replaced from vanilla arch kernel)
 - Bigger fonts by default in tty
 - zstd compression (Replaced from xz)
 - Debloated airootfs
