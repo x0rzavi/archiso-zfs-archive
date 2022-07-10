@@ -46,10 +46,24 @@ EOF
     echo "chaotic-aur repo added!"
 }
 
-# Apply execute permissions for x0rzavi's files
+# Add archzfs repo
+archzfs () {
+    pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+    pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+
+cat >>/etc/pacman.conf << EOF
+
+[archzfs]
+Server = https://archzfs.com/\$repo/\$arch
+EOF
+
+    echo "archzfs repo added!"
+}
+
+# Apply executable permissions for x0rzavi's files
 bin_executable () {
     chmod +x /home/x0rzavi/.bin/*
-    echo "execute permissions added!"
+    echo "executable permissions added!"
 }
 
 # Actually do things
@@ -58,4 +72,5 @@ amdgpu_brightness
 pacman_conf
 paru_conf
 chaotic_aur
+archzfs
 bin_executable
