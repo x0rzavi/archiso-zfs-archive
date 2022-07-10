@@ -21,7 +21,7 @@ jobs:
       - name: Init pacman keyring
         run: |
           pacman-key --init
-          pacman -Syyu --noconfirm
+          pacman -Syyu --noconfirm git
 
       - name: Add archzfs repo
         run: |
@@ -39,7 +39,7 @@ jobs:
       
       - name: Update themes
         run: source $(pwd)/.github/workflows/update_themes.sh
-        
+
       - name: Build ArchISO
         run: |
           pacman -Syyu archiso --noconfirm
