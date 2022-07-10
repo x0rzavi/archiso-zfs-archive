@@ -38,7 +38,7 @@ jobs:
       - name: Build ArchISO
         run: |
           pacman -Syyu archiso --noconfirm
-          mkarchiso -v -w /tmp/archiso .
+          mkarchiso -v .
       
       - name: Create release tags
         run: |
