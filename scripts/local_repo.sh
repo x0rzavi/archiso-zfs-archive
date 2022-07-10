@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Update theme files
+# Update local repo
 
 # Safer script
 trap "exit" INT
