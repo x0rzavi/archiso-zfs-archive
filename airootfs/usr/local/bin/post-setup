@@ -46,9 +46,16 @@ EOF
     echo "chaotic-aur repo added!"
 }
 
+# Apply execute permissions for x0rzavi's files
+bin_executable () {
+    chmod +x /home/x0rzavi/.bin/*
+    echo "execute permissions added!"
+}
+
 # Actually do things
 expand_cowspace
 amdgpu_brightness
 pacman_conf
 paru_conf
 chaotic_aur
+bin_executable
