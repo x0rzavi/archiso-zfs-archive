@@ -19,7 +19,8 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v3
       - name: Init lsign key
-        uses: pacman-key --init
+        run: |
+          pacman-key --init
       - name: Add archzfs repo
         run: |
           pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
