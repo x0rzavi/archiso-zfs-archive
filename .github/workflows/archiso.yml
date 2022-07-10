@@ -18,10 +18,18 @@ jobs:
     steps:
       - name: Checkout files
         uses: actions/checkout@v3
-      - name: Get basic info
+      - name: Add archzfs repo
         run: |
-          ls
-          whoami
-          pwd
+          pacman-key -r DDF7DB817396A49B2A2723F7403BD972F75D9D76
+          pacman-key --lsign-key DDF7DB817396A49B2A2723F7403BD972F75D9D76
+          echo -e "\n[archzfs]\nServer = https://archzfs.com/$repo/$arch" >> /etc/pacman.conf
+      - name: Add chaotic-aur repo
+        run: |
+          pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+          pacman-key --lsign-key FBA220DFC880C036
+          pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+          echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+      - name: Start building
+        run: |
           pacman -Syyu archiso --noconfirm
           mkarchiso -v -w /tmp/archiso .
