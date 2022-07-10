@@ -132,6 +132,7 @@ linux-xanmod-edge-headers
 lshw
 pciutils
 polkit
+zenpower3-dkms
 
 ##### graphics #####
 bemenu-wayland
@@ -151,10 +152,6 @@ noto-fonts-emoji
 vulkan-radeon
 libva-mesa-driver
 
-##### applications #####
-foot
-firefox-nightly
-
 ##### sound #####
 pipewire
 pipewire-alsa
@@ -167,6 +164,8 @@ acpilight
 btop
 byobu
 ffmpeg
+firefox-nightly
+foot
 git
 htop
 micro
