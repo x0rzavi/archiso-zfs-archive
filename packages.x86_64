@@ -127,8 +127,8 @@ zsh
 #archzfs-linux-zen-git
 archzfs-dkms-git
 libnotify
-linux-zen
-linux-zen-headers
+linux-xanmod
+linux-xanmod-headers
 lshw
 pciutils
 polkit
