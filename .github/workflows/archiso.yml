@@ -40,8 +40,16 @@ jobs:
           pacman -Syyu archiso --noconfirm
           mkarchiso -v -w /tmp/archiso .
       
-      - name: Upload ArchISO artifact
-        uses: actions/upload-artifact@v3
+      - name: Create release tags
+        run: |
+          echo "filePath=out/$(ls out)" >> $GITHUB_ENV
+          echo "fileName=$(ls out)" >> $GITHUB_ENV
+          echo "fileTag=$(date +%d-%m-%Y+%R)" >> $GITHUB_ENV
+
+      - name: Release ArchISO
+        uses: softprops/action-gh-release@v1
         with:
-          path: out/*
+          files: ${{ env.filePath }}
+          name: ${{ env.fileName }}
+          tag_name: ${{ env.fileTag }}
           
