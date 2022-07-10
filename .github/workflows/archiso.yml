@@ -17,12 +17,6 @@ jobs:
 
       - name: Edit pacman config
         run: sed -i 's/#ParallelDownloads.*/ParallelDownloads = 15/' /etc/pacman.conf
-
-      - name: Edit makepkg config
-        run: |
-          sed -i 's/-O2/-O3/' /etc/makepkg.conf
-          sed -i 's/#MAKEFLAGS.*/MAKEFLAGS="j4"/' /etc/makepkg.conf
-          sed -i 's/COMPRESSZST.*/COMPRESSZST=(zstd -c -z -q --threads=0 -)/' /etc/makepkg.conf
       
       - name: Init pacman keyring
         run: |
@@ -43,13 +37,12 @@ jobs:
           pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
           echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
       
-      - name: Build local repo
-        run: |
-          pacman -Syyu paru archiso --noconfirm
-          source $(pwd)/scripts/local_repo.sh
+      - name: Local repo location
+        run: sed -i "101 s|Server.*|Server = file://$(pwd)/repo|" $(pwd)/pacman.conf
 
       - name: Build ArchISO
         run: |
+          pacman -Syyu archiso --noconfirm
           time mkarchiso -v .
       
       - name: Create release tags
