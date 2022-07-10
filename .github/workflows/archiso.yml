@@ -44,7 +44,7 @@ jobs:
         run: |
           echo "filePath=out/$(ls out)" >> $GITHUB_ENV
           echo "fileName=$(ls out)" >> $GITHUB_ENV
-          echo "fileTag=$(date +%d-%m-%Y+%R)" >> $GITHUB_ENV
+          echo "fileTag=$(date +%d-%m-%Y-%H-%M)" >> $GITHUB_ENV
 
       - name: Release ArchISO
         uses: softprops/action-gh-release@v1
