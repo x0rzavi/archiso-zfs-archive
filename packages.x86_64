@@ -124,8 +124,11 @@ vim
 zsh
 
 ##### core #####
-archzfs-linux-zen-git
+#archzfs-linux-zen-git
+archzfs-dkms-git
+libnotify
 linux-zen
+linux-zen-headers
 lshw
 pciutils
 polkit
