@@ -1,3 +1,5 @@
+[![Build ArchISO](https://github.com/x0rzavi/archiso-zfs/actions/workflows/archiso.yml/badge.svg)](https://github.com/x0rzavi/archiso-zfs/actions/workflows/archiso.yml)
+
 ## Customizations
 - ZFS support
 - Linux Xanmod Edge
