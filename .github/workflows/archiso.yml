@@ -40,7 +40,7 @@ jobs:
       - name: Build ArchISO
         run: |
           pacman -Syyu archiso --noconfirm
-          mkarchiso -v .
+          time mkarchiso -v .
       
       - name: Create release tags
         run: |
