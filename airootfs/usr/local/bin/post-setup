@@ -83,5 +83,5 @@ while true; do
     else
         echo "Network still not accessible!"
     fi
-    sleep 0.5
+    sleep 1
 done
