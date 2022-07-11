@@ -130,6 +130,8 @@ libnotify
 linux-xanmod-edge
 linux-xanmod-edge-headers
 lshw
+man-db
+man-pages
 openbsd-netcat
 pciutils
 polkit
@@ -162,6 +164,7 @@ wireplumber
 
 ##### utility #####
 acpilight
+aria2
 btop
 byobu
 ffmpeg
@@ -171,6 +174,7 @@ git
 htop
 micro
 nnn
+p7zip
 paru
 pfetch-git
 playerctl
