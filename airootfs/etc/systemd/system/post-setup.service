@@ -1,7 +1,8 @@
 [Unit]
-Description=Setup after booted up and network active
+Description=Post setup mechanism
 After=pacman-init.service
-Wants=pacman-init.service network-online.target
+Requires=pacman-init.service
+BindsTo=pacman-init.service
 
 [Service]
 Type=oneshot

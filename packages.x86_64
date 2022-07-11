@@ -130,6 +130,7 @@ libnotify
 linux-xanmod-edge
 linux-xanmod-edge-headers
 lshw
+openbsd-netcat
 pciutils
 polkit
 zenpower3-dkms

@@ -66,11 +66,22 @@ bin_executable () {
     echo "executable permissions added!"
 }
 
-# Actually do things
-expand_cowspace
-amdgpu_brightness
-pacman_conf
-paru_conf
-chaotic_aur
-archzfs
-bin_executable
+# Actually do things if network is accessible
+# systemd's network-online.target is finicky
+while true; do
+    nc -z 8.8.8.8 53  >/dev/null 2>&1
+    online=$?
+    if [ $online -eq 0 ]; then
+        expand_cowspace
+        amdgpu_brightness
+        pacman_conf
+        paru_conf
+        chaotic_aur
+        archzfs
+        bin_executable
+        break
+    else
+        echo "Network still not accessible!"
+    fi
+    sleep 0.5
+done
