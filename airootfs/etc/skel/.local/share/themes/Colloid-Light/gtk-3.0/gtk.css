@@ -6047,6 +6047,10 @@ tooltip.background.chromium {
 /***********
  * Firefox *
  ***********/
+#MozillaGtkWidget decoration {
+  border: none;
+}
+
 #MozillaGtkWidget > widget text {
   background-color: #FFFFFF;
 }
