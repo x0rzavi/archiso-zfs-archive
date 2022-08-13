@@ -168,7 +168,7 @@ aria2
 btop
 byobu
 ffmpeg
-firefox-nightly
+firefox
 foot
 git
 htop
@@ -186,5 +186,4 @@ zsh-autosuggestions
 
 ##### AUR #####
 ryzenadj-git
-amdctl
 nbfc-linux
