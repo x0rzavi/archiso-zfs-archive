@@ -1,40 +1,61 @@
-#!/usr/bin/env bash
+#!/bin/env dash
 
 # Author: https://github.com/x0rzavi
-# Description: Brightness manipulation
-# Dependencies: acpilight
+# Description: Easy brightness manipulator
+# Dependencies: acpilight, Lucide icons
+
+# Variables
+step='3'
+fps='100'
+
+get_icon () {
+	if [ "${brightness}" -ge '0' ] && [ "${brightness}" -lt '30' ]
+	then icon=''
+	elif [ "${brightness}" -ge '30' ] && [ "${brightness}" -lt '60' ]
+	then icon=''
+	elif [ "${brightness}" -ge '60' ]
+	then icon=''
+	fi
+}
 
 get_brightness () {
-	brightness="$(xbacklight -get)"
-	echo " $brightness%"
+	brightness=$(xbacklight -get)
+	get_icon
+	printf '%s  %s%%\n' "${icon}" "${brightness}"
 }
 
 inc_brightness () {
-	xbacklight +4
+	xbacklight -fps "${fps}" +"${step}"
 	get_brightness
 }
 
 dec_brightness () {
-	xbacklight -4
+	xbacklight -fps "${fps}" -"${step}"
+	get_brightness
+}
+
+set_brightness () {
+	xbacklight -fps "${fps}" "$1"
 	get_brightness
 }
 
 show_help () {
-	cat <<EOF
-Usage: brightness.sh [options]
-AVAILABLE OPTIONS:
-  --get         get current brightness
-  --inc         increase current brightness by +4
-  --dec         decrease current brightness by -4
-EOF
+	cat<<- EOF
+	Usage: brightness.sh [option] [argument]
+
+	Available options:
+	-g           get current brightness
+	-i           increase current brightness by +${step}
+	-d           decrease current brightness by -${step}
+	-s (arg)     set brightness to (arg)
+	EOF
 }
 
-if [[ "$1" == "--get" ]]; then
-	get_brightness
-elif [[ "$1" == "--inc" ]]; then
-	inc_brightness
-elif [[ "$1" == "--dec" ]]; then
-	dec_brightness
-else
-	show_help
-fi
+getopts gids: opt
+case ${opt} in
+	(g) get_brightness;;
+	(i) inc_brightness;;
+	(d) dec_brightness;;
+	(s) set_brightness "${OPTARG}";;
+	(\?) show_help;;
+esac

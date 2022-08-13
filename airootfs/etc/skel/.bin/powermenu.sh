@@ -1,46 +1,58 @@
-#!/usr/bin/env bash
+#!/bin/env dash
 
 # Author: https://github.com/x0rzavi
-# Description: Powermenu implemented with bmenu
-# Dependencies: bemenu, libnotify, elogind
+# Description: Powermenu with bemenu
+# Dependencies: sway, bemenu, libnotify, elogind, Lucide icons
 # Theme: Catppuccin
 
 # Variables
-black="#1E1E2E" 
-sky="#89DCEB"
-mauve="#DDB6F2" 
-peach="#F8BD96"
-green="#ABE9B3"
-options="ﰸ Cancel\n Suspend\n Logout\n勒 Reboot\n襤 Shutdown"
-selected=$(echo -e $options \
-	| bemenu \
-	--prefix '' \
-	--prompt 'POWERMENU  ' \
-	--list 6 \
-	--fn 'Iosevka Nerd Font 14' \
-	--tb $black \
-	--tf $sky \
-	--fb $black \
-	--ff $mauve \
-	--nb $black \
-	--nf $peach \
-	--hb $black \
-	--hf $green)
+black='#1E1E2E'
+sky='#89DCEB'
+mauve='#CBA6F7' 
+peach='#FAB387'
+green='#A6E3A1'
+options=' Cancel\n Suspend\n Lock\n Logout\n Reboot\n Shutdown'
 
-if [[ "$selected" == *"Cancel"* ]]; then
-	:
-elif [[ "$selected" == *"Suspend"* ]]; then
-	notify-send "     Suspending in 5 seconds"
-	sleep 5
-	systemctl suspend
-elif [[ "$selected" == *"Logout"* ]]; then
-	sway_exit.sh
-elif [[ "$selected" == *"Shutdown"* ]]; then
-	notify-send "  襤   Shutting down in 5 seconds"
-	sleep 5
-	systemctl poweroff
-elif [[ "$selected" == *"Reboot"* ]]; then
-	notify-send "  勒   Rebooting in 5 seconds"
-	sleep 5	
-	systemctl reboot
-fi
+selected=$(printf '%b' "${options}" \
+	| bemenu \
+	--ignorecase \
+	--list 6 \
+	--prefix '' \
+	--prompt 'POWERMENU ' \
+	--fork \
+	--line-height 25 \
+	--cw 3 \
+	--fn 'Iosevka Nerd Font Bold' \
+	--tb "${black}" \
+	--tf "${peach}" \
+	--fb "${black}" \
+	--ff "${mauve}" \
+	--nb "${black}" \
+	--nf "${peach}" \
+	--hb "${black}" \
+	--hf "${green}" \
+	--ab "${black}" \
+	--af "${sky}" \
+	--bdr "${mauve}" \
+	--cb "${black}" \
+	--cf "${mauve}" )
+
+case "${selected}" in
+	(*Cancel*) :;;
+	(*Suspend*) 
+		notify-send --expire-time=3000 " Suspending in 5 seconds..." && \
+		sleep 5 && \
+		sway_lock.sh && \
+		sleep 1 && \
+		loginctl suspend;;
+	(*Lock*) sway_lock.sh;;
+	(*Logout*) sway_exit.sh;;
+	(*Shutdown*) 
+		notify-send --expire-time=3000 " Shutting down in 5 seconds..." && \
+		sleep 5 && \
+		loginctl poweroff;;
+	(*Reboot*)
+		notify-send --expire-time=3000 " Rebooting in 5 seconds..." && \
+		sleep 5	&& \
+		loginctl reboot;;
+esac
