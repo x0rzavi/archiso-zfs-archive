@@ -14,7 +14,6 @@ cleanup () {
     rm -fr $parent/Themes
     rm -fr $parent/airootfs/etc/skel/.local/share/icons
     rm -fr $parent/airootfs/etc/skel/.local/share/themes
-    rm -fr $parent/airootfs/etc/skel/.config/gtk-4.0
     echo -e "Cleanup done!"
 }
 
@@ -23,7 +22,6 @@ mkdirs () {
     mkdir -p $parent/Themes
     mkdir -p $parent/airootfs/etc/skel/.local/share/icons
     mkdir -p $parent/airootfs/etc/skel/.local/share/themes
-    mkdir -p $parent/airootfs/etc/skel/.config/gtk-4.0
     echo -e "Making dirs done!"
 }
 
@@ -37,7 +35,6 @@ clone () {
 # Install GTK
 install_gtk () {
     cd $parent/Themes/gtk && ./install.sh --tweaks rimless --dest $parent/airootfs/etc/skel/.local/share/themes
-    cp $parent/airootfs/etc/skel/.local/share/themes/Colloid-Dark/gtk-4.0/* $parent/airootfs/etc/skel/.config/gtk-4.0/ -r
     echo -e "\nGTK theme installed!\n"
 }
 
