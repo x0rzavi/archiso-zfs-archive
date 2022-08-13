@@ -1,44 +1,39 @@
-#!/usr/bin/env bash
+#!/bin/env dash
 
 # Author: https://github.com/x0rzavi
-# Description: Volume manipulation
-# Dependencies: pulseaudio
+# Description: Easy volume manipulator
+# Dependencies: pulseaudio, Lucide icons
+
+# Variables
+step='2'
 
 get_icon () {
-	if [[ "$volume" -eq "0" ]]; then
-		icon='婢'
-	elif [[ ("$volume" -ge "0") && ("$volume" -le "30") ]]; then
-		icon=''
-	elif [[ ("$volume" -ge "30") && ("$volume" -le "60") ]]; then
-		icon=''
-	elif [[ ("$volume" -ge "60") && ("$volume" -le "100") ]]; then
-		icon=''
+	if [ "${volume}" -eq '0' ] || [ "${state}" = 'yes' ]
+	then icon=''
+	elif [ "${volume}" -ge '0' ] && [ "${volume}" -lt '55' ]
+	then icon=''
+	elif [ "${volume}" -ge '55' ]
+	then icon=''
 	fi
 }
 
-get_mute_state () {
-	state=$(pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //g')
-}
-
 get_volume () {
-	volume="$(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/[^%0-9 ]*//g;s/  */\n/g' | sed -n '/%/p' | sed -e 's/%//' | head -n 1)"
-	get_mute_state
-	if [[ $state = "no" ]]
-	then
-		get_icon
-		echo "$icon" "$volume%"
-	else
-		echo "婢Muted"
+	volume=$(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/[^%0-9 ]*//g;s/  */\n/g' | sed -n '/%/p' | sed -e 's/%//' | head -n 1)
+	state=$(pactl get-sink-mute @DEFAULT_SINK@ | sed -e 's/Mute: //g')
+	get_icon
+	if [ "${state}" = 'no' ]
+	then printf '%s  %s%%\n' "${icon}" "${volume}"
+	else printf '%s  Muted\n' "${icon}"
 	fi
 }
 
 inc_volume () {
-	pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +2%
+	pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +"${step}"%
 	get_volume
 }
 
 dec_volume () {
-	pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -2%
+	pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -"${step}"%
 	get_volume
 }
 
@@ -49,31 +44,35 @@ toggle_volume () {
 
 mute_volume () {
 	pactl set-sink-mute @DEFAULT_SINK@ 1
-	echo "婢Muted"
+	get_volume
+}
+
+set_volume () {
+	pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ "$1"%
+	get_volume
 }
 
 show_help () {
-    cat <<EOF
-Usage: volume.sh [options]
-AVAILABLE OPTIONS:
-  --get         get current volume
-  --inc         increase current volume by +2
-  --dec         decrease current volume by -2
-  --toggle      toggle speaker state
-  --mute        mute speaker
-EOF
+	cat <<- EOF
+	Usage: volume.sh [option] [argument]
+
+	Available options:
+	-g          get current volume
+	-i          increase current volume by +${step}
+	-d          decrease current volume by -${step}
+	-t          toggle current volume state
+	-m          mute volume device
+	-s (arg)    set volume to (arg)
+	EOF
 }
 
-if [[ "$1" == "--get" ]]; then
-	get_volume
-elif [[ "$1" == "--inc" ]]; then
-	inc_volume
-elif [[ "$1" == "--dec" ]]; then
-	dec_volume
-elif [[ "$1" == "--toggle" ]]; then
-	toggle_volume
-elif [[ "$1" == "--mute" ]]; then
-	mute_volume
-else
-	show_help
-fi
+getopts gidtms: opt
+case ${opt} in
+	(g) get_volume;;
+	(i) inc_volume;;
+	(d) dec_volume;;
+	(t) toggle_volume;;
+	(m) mute_volume;;
+	(s) set_volume "${OPTARG}";;
+	(\?) show_help;;
+esac

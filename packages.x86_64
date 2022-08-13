@@ -126,6 +126,7 @@ zsh
 ##### core #####
 #archzfs-linux-zen-git
 archzfs-dkms-git
+dash
 libnotify
 linux-xanmod-edge
 linux-xanmod-edge-headers
@@ -164,20 +165,24 @@ wireplumber
 
 ##### utility #####
 acpilight
+alacritty
 aria2
 btop
 byobu
 ffmpeg
-firefox
+firefox-nightly
 foot
 git
+grim
 htop
 micro
+neovim
 nnn
 p7zip
 paru
 pfetch-git
 playerctl
+slurp
 wl-clipboard
 xdg-desktop-portal-wlr
 xdg-user-dirs
