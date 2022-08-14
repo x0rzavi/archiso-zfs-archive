@@ -44,15 +44,15 @@ case "${selected}" in
 		sleep 5 && \
 		sway_lock.sh && \
 		sleep 1 && \
-		loginctl suspend;;
+		systemctl suspend;;
 	(*Lock*) sway_lock.sh;;
 	(*Logout*) sway_exit.sh;;
 	(*Shutdown*) 
 		notify-send --expire-time=3000 " Shutting down in 5 seconds..." && \
 		sleep 5 && \
-		loginctl poweroff;;
+		systemctl poweroff;;
 	(*Reboot*)
 		notify-send --expire-time=3000 " Rebooting in 5 seconds..." && \
 		sleep 5	&& \
-		loginctl reboot;;
+		systemctl reboot;;
 esac
