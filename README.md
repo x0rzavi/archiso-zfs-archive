@@ -24,8 +24,6 @@
 - nbfc-linux configured
 - zenmonitor3 added
 - Tuned only for AMD
-- AMDGPU early KMS
-- AMD iommu in passthrough mode
 - Added x0rzavi local user (password: 1229)
 - Added iwd profile
 - Added ssh pubkey
