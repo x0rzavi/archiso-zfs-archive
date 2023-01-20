@@ -28,3 +28,6 @@
 - Added iwd profile
 - Added ssh pubkey
 - Pre-added best mirrors
+
+## Sync status 
+- https://gitlab.archlinux.org/archlinux/archiso/-/commit/dedfe0364cd665a12bb7a4d6fdb3b978d02026ab
