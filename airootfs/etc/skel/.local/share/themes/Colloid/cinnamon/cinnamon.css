@@ -68,7 +68,7 @@ stage {
 
 .notification-button:insensitive, .notification-icon-button:insensitive, #notification .notification-button:insensitive, #notification .notification-icon-button:insensitive, .calendar-today-home-button:insensitive,
 .calendar-today-home-button-enabled:insensitive {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.3);
   background-color: transparent;
   border-radius: 6px;
 }
@@ -97,7 +97,7 @@ stage {
 }
 
 .modal-dialog-button-box .modal-dialog-button:insensitive {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.32);
   background-color: transparent;
 }
 
@@ -243,8 +243,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .toggle-switch {
-  width: 40px;
-  height: 20px;
+  width: 46px;
+  height: 24px;
   background-size: contain;
 }
 
@@ -983,7 +983,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar-event-time-past {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.3);
   font-weight: bold;
   text-align: left;
   margin-bottom: .6em;
@@ -1408,7 +1408,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .keyboard-key:grayed {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.32);
   background-color: transparent;
 }
 

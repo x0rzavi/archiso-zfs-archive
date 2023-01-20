@@ -38,7 +38,7 @@ clone () {
 # Install GTK
 install_gtk () {
     cd "${parent}"/Themes/gtk && \
-    sed -i '630s|&& link_theme||' install.sh && \
+    /bin/sed -i '628s|&& link_theme||' install.sh && \
     ./install.sh --tweaks rimless --dest "${parent}"/airootfs/etc/skel/.local/share/themes && \
     cp -r "${parent}"/airootfs/etc/skel/.local/share/themes/Colloid-Dark/gtk-4.0 "${parent}"/airootfs/etc/skel/.config/gtk-4.0 && \
     printf '\n%s\n' 'GTK + libadwaita theme installed!'
@@ -47,7 +47,7 @@ install_gtk () {
 # Install cursors
 install_cursors () {
     cd "${parent}"/Themes/cursor/cursors && \
-    sed -i "11s|\$HOME|${parent}/airootfs/etc/skel|" install.sh && \
+    /bin/sed -i "11s|\$HOME|${parent}/airootfs/etc/skel|" install.sh && \
     ./install.sh && \
     printf '\n%s\n' 'Cursor theme installed!'
 }
