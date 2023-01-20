@@ -125,6 +125,7 @@ zsh
 ##### core #####
 #archzfs-linux-zen-git
 archzfs-dkms-git
+zfs-utils-git
 dash
 libnotify
 linux-xanmod
