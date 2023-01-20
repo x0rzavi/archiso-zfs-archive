@@ -127,8 +127,8 @@ zsh
 archzfs-dkms-git
 dash
 libnotify
-linux-xanmod-edge
-linux-xanmod-edge-headers
+linux-xanmod
+linux-xanmod-headers
 lshw
 man-db
 man-pages
