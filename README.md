@@ -6,7 +6,7 @@
 
 ## Customizations
 - ZFS support
-- Linux Xanmod Edge
+- Xanmod kernel
 - Bigger fonts by default in tty
 - zstd compression
 - Debloated airootfs
