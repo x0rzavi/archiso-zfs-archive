@@ -30,4 +30,4 @@
 - Pre-added best mirrors
 
 ## Sync status 
-- https://gitlab.archlinux.org/archlinux/archiso/-/commit/dedfe0364cd665a12bb7a4d6fdb3b978d02026ab
+- https://gitlab.archlinux.org/archlinux/archiso/-/commit/0f34e4429a6d16d201c2568417cdc5ff79dd68dd
