@@ -6954,6 +6954,15 @@ panelstatusbar > paneltogglebutton button {
   outline-color: #3c84f7;
 }
 
+playlistview scrollbar.overlay-indicator.dragging, playlistview scrollbar.overlay-indicator.hovering {
+  background-color: transparent;
+}
+
+playlistview queuerow picture.cover,
+playlistview queuerow image.card {
+  border: none;
+}
+
 window.dialog > .dialog-vbox > box > scrolledwindow > viewport > widget > list.boxed-list {
   border: none;
   border-radius: 0;
