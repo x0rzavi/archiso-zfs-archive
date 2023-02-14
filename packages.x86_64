@@ -73,7 +73,7 @@ nfs-utils
 #nilfs-utils
 #nmap
 #ntfs-3g
-#nvme-cli
+nvme-cli
 #open-iscsi
 #open-vm-tools
 #openconnect
@@ -96,7 +96,7 @@ refind
 #screen
 sdparm
 #sg3_utils
-#smartmontools
+smartmontools
 #sof-firmware
 #squashfs-tools
 sudo
