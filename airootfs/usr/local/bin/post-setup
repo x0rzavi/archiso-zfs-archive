@@ -6,11 +6,11 @@ expand_cowspace () {
     echo "cowspace expansion done!"
 }
 
-# Reduce amdgpu brightness to 15
+# Reduce amdgpu brightness to 70
 amdgpu_brightness () {
     sysfs_file=/sys/class/backlight/amdgpu_bl0/brightness
     if [[ -f "$sysfs_file" ]]; then
-        echo 15 > "$sysfs_file"
+        echo 70 > "$sysfs_file"
         echo "amdgpu brightness control done!"
     else
         echo "amdgpu brightness control not found!"
