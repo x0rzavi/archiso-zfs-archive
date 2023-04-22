@@ -1352,8 +1352,7 @@ splitbutton > separator {
 }
 
 splitbutton > menubutton > button {
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 6px 10px;
 }
 
 splitbutton.image-button > button {
@@ -2151,9 +2150,17 @@ headerbar.selection-mode .selection-menu .arrow {
 }
 
 headerbar.default-decoration {
-  min-height: 24px;
-  padding: 6px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  min-height: 36px;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  background-image: image(#F2F2F2);
+}
+
+headerbar.default-decoration:backdrop {
+  background-image: image(#FAFAFA);
 }
 
 headerbar.default-decoration windowcontrols button,
@@ -5273,6 +5280,11 @@ window.csd.maximized, window.csd.fullscreen, window.csd.tiled, window.csd.tiled-
   transition: none;
 }
 
+window.csd.maximized, window.csd.fullscreen {
+  box-shadow: none;
+  outline: none;
+}
+
 window.solid-csd {
   margin: 0;
   padding: 2px;
@@ -5283,10 +5295,6 @@ window.solid-csd {
 
 window.solid-csd:backdrop {
   background-color: #FAFAFA;
-}
-
-window.ssd {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 windowcontrols button:not(.suggested-action):not(.destructive-action) {

@@ -700,7 +700,7 @@ actionbar > revealer > box .linked > button:checked:disabled:not(.suggested-acti
 }
 
 .raven .expander-button, window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle,
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat), window.background > box.vertical > toolbar.primary-toolbar > toolitem button.flat.scale, window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat), window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
 window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button, .nautilus-window headerbar revealer > button, button.titlebutton:not(.suggested-action):not(.destructive-action), filechooser #pathbarbox > stack > box > button, button.close, button.circular, .inline-toolbar button:not(.text-button) {
@@ -708,7 +708,7 @@ window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem >
 }
 
 .raven .expander-button label, window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle label,
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat) label, window.background > box.vertical > toolbar.primary-toolbar > toolitem button.flat.scale label, window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised label, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button label,
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat) label, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button label,
 window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button label,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button label,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button label, .nautilus-window headerbar revealer > button label, button.titlebutton:not(.suggested-action):not(.destructive-action) label, filechooser #pathbarbox > stack > box > button label, button.close label, button.circular label, .inline-toolbar button:not(.text-button) label {
@@ -1574,8 +1574,9 @@ searchbar > revealer > box {
   min-height: 24px;
   padding: 6px 12px;
   border-radius: 12px 12px 0 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  border: none;
   background-color: #F2F2F2;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
 }
 
 .titlebar.default-decoration:backdrop {
@@ -1596,7 +1597,7 @@ searchbar > revealer > box {
 
 .background.csd .titlebar.default-decoration {
   padding: 6px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15), inset 0 -1px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
 }
 
 .background:not(.csd) .titlebar.default-decoration button.titlebutton:active {
@@ -1619,7 +1620,8 @@ box.vertical headerbar {
 
 headerbar entry,
 headerbar spinbutton,
-headerbar button {
+headerbar button,
+headerbar stackswitcher {
   margin-top: 6px;
   margin-bottom: 6px;
 }
@@ -3399,6 +3401,10 @@ list.navigation-sidebar > row {
   border-radius: 6px;
 }
 
+paned scrolledwindow > viewport.frame > list {
+  background-color: transparent;
+}
+
 .budgie-popover scrolledwindow.sidebar:not(.categories) list > row.activatable, treeview.view header button, row.activatable {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
   outline: none;
@@ -3530,25 +3536,26 @@ calendar:indeterminate {
  * Dialogs *
  ***********/
 messagedialog.background {
-  background-color: #FFFFFF;
+  background-color: #F2F2F2;
+}
+
+messagedialog.background .titlebar, messagedialog.background .titlebar:backdrop {
+  background-color: #F2F2F2;
 }
 
 messagedialog.background.csd {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  background-color: #FFFFFF;
 }
 
-messagedialog .titlebar {
-  min-height: 24px;
-  border-style: none;
+messagedialog.background.csd .titlebar, messagedialog.background.csd .titlebar:backdrop {
+  background-color: #FFFFFF;
+}
+
+messagedialog .titlebar, messagedialog.background.csd .titlebar {
+  border: none;
   box-shadow: none;
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-messagedialog .titlebar:backdrop {
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.6);
 }
 
 messagedialog .dialog-action-box {
@@ -4087,7 +4094,7 @@ tooltip.csd decoration {
   border: none;
 }
 
-messagedialog.csd decoration {
+messagedialog.background.csd decoration {
   border-radius: 12px;
 }
 
@@ -4992,7 +4999,7 @@ window.background.csd box.vertical > overlay > stack.background {
  * Rhythmbox *
  *************/
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle,
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat), window.background > box.vertical > toolbar.primary-toolbar > toolitem button.flat.scale, window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat), window.background > box.vertical > toolbar.primary-toolbar > toolitem button.flat.scale, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
 window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button {
@@ -5000,6 +5007,10 @@ window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem >
   min-width: 24px;
   padding: 6px;
   margin: 0;
+}
+
+.sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar {
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.12);
 }
 
 .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button {
@@ -5030,9 +5041,18 @@ window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem >
 window.csd > box.vertical > box.vertical > toolbar.horizontal,
 window.solid-csd > box.vertical > box.vertical > toolbar.horizontal {
   padding: 6px;
+  margin: -1px 0;
   border-bottom: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: none;
   background-color: transparent;
+}
+
+window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
+window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button {
+  margin: 6px 0;
 }
 
 window.csd > box.vertical > box.vertical > frame,
@@ -5046,8 +5066,89 @@ window.solid-csd > box.vertical > box.vertical > frame > border {
   border: none;
 }
 
+window.background > box.vertical > toolbar.primary-toolbar {
+  padding: 0 12px 0 6px;
+}
+
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised {
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
+  outline: none;
+  box-shadow: inset 0 0 0 9999px transparent;
+  background-color: rgba(0, 0, 0, 0.04);
+  background-image: radial-gradient(circle, transparent 10%, transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000% 1000%;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:hover {
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+}
+
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:active {
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms, border 0ms;
+  animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+  background-image: radial-gradient(circle, alpha(currentColor, 0.12) 10%, transparent 0%);
+  background-size: 0% 0%;
+}
+
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:disabled {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.38);
+}
+
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:checked {
+  background-color: #3c84f7;
+  color: #FFFFFF;
+}
+
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised > widget > box > image {
-  padding: 0;
+  padding: 0 3px;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > grid > grid > grid,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > grid > grid > grid,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > notebook > stack > grid > grid > grid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  margin: -6px;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > grid > grid > box,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > grid > grid > box,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > notebook > stack > grid > grid > box {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 6px 6px;
+  margin: 0 -6px -6px 0;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > grid > paned > box > scrolledwindow:not(:last-child),
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > notebook > stack > grid > paned > box > scrolledwindow:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  margin-right: -1px;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > grid > grid > grid,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > box > grid > grid > grid,
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > notebook > stack > grid > grid > grid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 3px;
+  margin: -1px -6px -6px;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > grid > paned > box > scrolledwindow:not(:last-child),
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > box > grid > paned > box > scrolledwindow:not(:last-child),
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > notebook > stack > grid > paned > box > scrolledwindow:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  margin-right: -1px;
+}
+
+window.background > box > .sidebar-paned > paned > box > notebook > stack > box > box > paned > box:first-child > box {
+  padding: 0 6px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 /**********
@@ -6892,7 +6993,16 @@ MsdOsdWindow.background.osd .progressbar {
   border-radius: 12px;
 }
 
-.budgie-popover .container, .budgie-popover list, .budgie-popover row {
+.budgie-popover frame.container {
+  padding: 6px;
+  border: none;
+}
+
+.budgie-popover frame.container .container {
+  padding: 0;
+}
+
+.budgie-popover list, .budgie-popover row {
   padding: 0;
 }
 
@@ -6981,8 +7091,44 @@ MsdOsdWindow.background.osd .progressbar {
   border-radius: 0;
 }
 
-.budgie-popover.user-menu .container {
+.budgie-popover.budgie-menu list.left-overlay-menu {
+  border-radius: 12px;
+  background-color: #FFFFFF;
   padding: 6px;
+  margin: 6px;
+  border: none;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+.budgie-popover.budgie-menu list.left-overlay-menu > row.activatable {
+  border-radius: 6px;
+}
+
+.budgie-popover.budgie-menu list.left-overlay-menu > row.activatable:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+.budgie-popover.budgie-menu list.left-overlay-menu > row.activatable button.menuitem {
+  border-radius: 6px;
+}
+
+.budgie-popover.budgie-menu .budgie-menu-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 6px;
+}
+
+.budgie-popover.budgie-menu .budgie-menu-footer button.flat {
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.budgie-popover.budgie-menu .budgie-menu-footer button.flat.image-button {
+  border-radius: 9999px;
+  padding: 6px;
+  min-height: 16px;
+  min-width: 16px;
+  margin-left: 6px;
+  background-clip: border-box;
 }
 
 .budgie-popover.user-menu list,
@@ -7003,20 +7149,8 @@ MsdOsdWindow.background.osd .progressbar {
   animation: none;
 }
 
-.budgie-popover.caffeine-popover frame > .container {
-  padding: 6px;
-}
-
-.budgie-popover.night-light-indicator .container {
-  padding: 3px;
-}
-
 .budgie-popover.night-light-indicator .view-header {
   margin: 0 6px;
-}
-
-.budgie-popover.places-menu .container {
-  padding: 3px;
 }
 
 .budgie-popover.places-menu .name-button image:dir(ltr) {
@@ -7118,6 +7252,50 @@ MsdOsdWindow.background.osd .progressbar {
   background-color: rgba(242, 242, 242, 0.75);
 }
 
+.budgie-panel .icon-tasklist button.launcher:checked, .budgie-panel .icon-tasklist button.launcher:active {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.top .budgie-panel.dock-mode {
+  border-radius: 0 0 12px 12px;
+}
+
+.bottom .budgie-panel.dock-mode {
+  border-radius: 12px 12px 0 0;
+}
+
+.bottom .budgie-panel.dock-mode .icon-tasklist > box > revealer:first-child > button.launcher {
+  border-top-left-radius: 12px;
+}
+
+.bottom .budgie-panel.dock-mode .icon-tasklist > box > revealer:last-child > button.launcher {
+  border-top-right-radius: 12px;
+}
+
+.left .budgie-panel.dock-mode {
+  border-radius: 0 12px 12px 0;
+}
+
+.left .budgie-panel.dock-mode .icon-tasklist .launcher:first-child {
+  border-top-right-radius: 12px;
+}
+
+.left .budgie-panel.dock-mode .icon-tasklist .launcher:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.right .budgie-panel.dock-mode {
+  border-radius: 12px 0 0 12px;
+}
+
+.right .budgie-panel.dock-mode .icon-tasklist .launcher:first-child {
+  border-top-left-radius: 12px;
+}
+
+.right .budgie-panel.dock-mode .icon-tasklist .launcher:last-child {
+  border-bottom-left-radius: 12px;
+}
+
 .budgie-panel button {
   color: rgba(0, 0, 0, 0.6);
   min-height: 24px;
@@ -7157,11 +7335,41 @@ MsdOsdWindow.background.osd .progressbar {
 }
 
 .budgie-panel separator {
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .budgie-panel .alert {
   color: #E53935;
+}
+
+.budgie-panel > box > widget > widget > image,
+.budgie-panel > box > widget > widget > stack > image,
+.budgie-panel > box > widget > widget > box > image {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.budgie-panel > box > widget > widget > box > image + label {
+  margin-left: -4px;
+}
+
+.budgie-panel > box > widget > widget > box > widget > image {
+  margin-left: 6px;
+}
+
+.budgie-panel > box > widget > widget > box > stack > widget > label {
+  margin-right: 6px;
+}
+
+.budgie-panel > box > widget > widget > box > widget > widget > image {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.budgie-panel .budgie-clock-applet > widget > box,
+.budgie-panel .budgie-calendar-applet > widget > box {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .budgie-panel .titlebar:not(headerbar) {
@@ -7196,6 +7404,11 @@ MsdOsdWindow.background.osd .progressbar {
 .budgie-panel .menubar > menuitem:hover,
 .budgie-panel .menubar > menuitem:active {
   color: rgba(0, 0, 0, 0.87);
+}
+
+.budgie-panel menubar menu separator,
+.budgie-panel .menubar menu separator {
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .budgie-panel #tasklist-button {
@@ -7389,6 +7602,10 @@ frame.raven-frame > border {
   padding-left: 12px;
 }
 
+.raven levelbar, .raven levelbar trough, .raven levelbar block {
+  border-radius: 9999px;
+}
+
 calendar.raven-calendar {
   border-style: none;
   background-color: transparent;
@@ -7409,6 +7626,12 @@ calendar.raven-calendar:selected {
 
 .raven-mpris button.image-button {
   padding: 12px;
+}
+
+image.raven-mpris {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
 }
 
 .raven-notifications-view > .raven-background > viewport.frame {
@@ -7469,7 +7692,7 @@ calendar.raven-calendar:selected {
 
 .drop-shadow {
   margin: 5px 9px;
-  padding: 3px;
+  padding: 6px;
   border-radius: 12px;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(255, 255, 255, 0.15);
   background-color: #FFFFFF;
@@ -7485,6 +7708,12 @@ calendar.raven-calendar:selected {
   background-color: #FFFFFF;
   border: none;
   padding: 0;
+}
+
+.budgie-session-dialog > box > grid,
+.budgie-polkit-dialog > box > grid,
+.budgie-run-dialog > box > grid {
+  padding: 24px;
 }
 
 .budgie-session-dialog.background, .budgie-session-dialog > decoration,
@@ -7537,6 +7766,10 @@ calendar.raven-calendar:selected {
 
 .budgie-polkit-dialog .failure {
   color: #E53935;
+}
+
+.budgie-polkit-dialog > box > grid {
+  padding-bottom: 0;
 }
 
 .budgie-run-dialog entry.search {
@@ -7679,7 +7912,10 @@ window#whiskermenu-window .title-area > .commands-area > button.flat.command-but
 }
 
 #XfceNotifyWindow {
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
 }
 
 #XfceNotifyWindow buttonbox {
@@ -7688,6 +7924,13 @@ window#whiskermenu-window .title-area > .commands-area > button.flat.command-but
 
 #XfceNotifyWindow label#summary {
   font-weight: bold;
+}
+
+dialog.xfsm-logout-dialog {
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.97);
+  border: none;
+  box-shadow: none;
 }
 
 #xfwm-tabwin {
@@ -7895,7 +8138,8 @@ menubar.-vala-panel-background > menuitem:disabled {
 }
 
 .nemo-window .toolbar {
-  padding: 0;
+  padding: 2px;
+  margin: -2px;
 }
 
 .nemo-window .toolbar button {
@@ -7905,6 +8149,14 @@ menubar.-vala-panel-background > menuitem:disabled {
 
 .nemo-window .toolbar separator {
   margin: 6px 0;
+}
+
+.nemo-window.background.csd .toolbar {
+  border-radius: 0 0 12px 12px;
+}
+
+.nemo-window.background.csd.maximized .toolbar {
+  border-radius: 0;
 }
 
 .places-treeview {

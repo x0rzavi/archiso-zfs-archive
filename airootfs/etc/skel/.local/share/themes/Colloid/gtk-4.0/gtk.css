@@ -1352,8 +1352,7 @@ splitbutton > separator {
 }
 
 splitbutton > menubutton > button {
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 6px 10px;
 }
 
 splitbutton.image-button > button {
@@ -2160,9 +2159,17 @@ headerbar.selection-mode .selection-menu .arrow {
 }
 
 headerbar.default-decoration {
-  min-height: 24px;
-  padding: 6px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  min-height: 36px;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  background-image: image(#242424);
+}
+
+headerbar.default-decoration:backdrop {
+  background-image: image(#2C2C2C);
 }
 
 headerbar.default-decoration windowcontrols button,
@@ -5282,6 +5289,11 @@ window.csd.maximized, window.csd.fullscreen, window.csd.tiled, window.csd.tiled-
   transition: none;
 }
 
+window.csd.maximized, window.csd.fullscreen {
+  box-shadow: none;
+  outline: none;
+}
+
 window.solid-csd {
   margin: 0;
   padding: 2px;
@@ -5292,10 +5304,6 @@ window.solid-csd {
 
 window.solid-csd:backdrop {
   background-color: #2C2C2C;
-}
-
-window.ssd {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 windowcontrols button:not(.suggested-action):not(.destructive-action) {
@@ -7389,7 +7397,7 @@ FIXME this is really an API */
 @define-color placeholder_text_color #666666;
 /* Very contrasty background for text views (@theme_text_color foreground) */
 @define-color text_view_bg #FFFFFF;
-@define-color budgie_tasklist_indicator_color rgba(0, 0, 0, 0.26);
+@define-color budgie_tasklist_indicator_color rgba(255, 255, 255, 0.3);
 @define-color budgie_tasklist_indicator_color_active #3c84f7;
 @define-color budgie_tasklist_indicator_color_active_window #305695;
 @define-color budgie_tasklist_indicator_color_attention #FFD600;
