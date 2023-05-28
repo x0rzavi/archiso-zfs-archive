@@ -3319,6 +3319,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: rgba(0, 0, 0, 0.04) !important;
   padding: 6px 10.5px;
   border: none !important;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .quick-menu-toggle .quick-toggle-arrow:hover {
